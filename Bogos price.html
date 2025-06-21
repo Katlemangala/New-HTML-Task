@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BOGO Offer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ff4d8b;
+      margin-bottom: 25px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .box {
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      position: relative;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .box.selected {
+      border-color: #ff4d8b;
+      background-color: #fff0f5;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .unit-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .unit-discount {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .standard-price {
+      font-size: 13px;
+      color: #666;
+      margin-top: 3px;
+    }
+
+    .discount-badge {
+      font-size: 12px;
+      color: white;
+      background-color: #ff4d8b;
+      border-radius: 4px;
+      padding: 2px 6px;
+      margin-left: 10px;
+    }
+
+    .price {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #aaa;
+      font-size: 13px;
+      margin-top: 3px;
+      text-align: right;
+    }
+
+    .most-popular {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #ff4d8b;
+      color: white;
+      font-size: 12px;
+      padding: 3px 6px;
+      border-radius: 5px;
+    }
+
+    .expanded {
+      margin-top: 10px;
+      display: none;
+    }
+
+    .box.selected .expanded {
+      display: block;
+    }
+
+    .selectors {
+      margin-top: 10px;
+    }
+
+    select {
+      margin-right: 10px;
+      padding: 4px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding: 0 5px;
+    }
+
+    .footer .delivery {
+      color: #ff4d8b;
+    }
+
+    .footer .total {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .add-to-cart {
+      margin-top: 15px;
+      padding: 12px;
+      width: 100%;
+      background-color: #ff4d8b;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .powered {
+      text-align: center;
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>YAY! It’s BOGO</h2>
+
+    <!-- Box 1 -->
+    <div class="box" onclick="selectBox(1)">
+      <div class="top-row">
+        <div class="unit-group">
+          <div class="unit-discount">1 Unit <span class="discount-badge">10% Off</span></div>
+          <div class="standard-price">Standard Price</div>
+        </div>
+        <div>
+          <div class="price">$10.00 USD</div>
+          <div class="old-price">$24.00 USD</div>
+        </div>
+      </div>
+      <div class="expanded" id="expand-1">
+        <div class="selectors">
+          <label>#1</label>
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>White</option><option>Colour</option></select>
+        </div>
+        <div class="selectors">
+          <label>#2</label>
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>White</option><option>Colour</option></select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="box" onclick="selectBox(2)">
+      <div class="most-popular">MOST POPULAR</div>
+      <div class="top-row">
+        <div class="unit-group">
+          <div class="unit-discount">2 Unit <span class="discount-badge">20% Off</span></div>
+        </div>
+        <div>
+          <div class="price">$18.00 USD</div>
+          <div class="old-price">$24.00 USD</div>
+        </div>
+      </div>
+      <div class="expanded" id="expand-2">
+        <div class="selectors">
+          <label>#1</label>
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>White</option><option>Colour</option></select>
+        </div>
+        <div class="selectors">
+          <label>#2</label>
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>White</option><option>Colour</option></select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Box 3 -->
+    <div class="box" onclick="selectBox(3)">
+      <div class="top-row">
+        <div class="unit-group">
+          <div class="unit-discount">3 Unit <span class="discount-badge">30% Off</span></div>
+        </div>
+        <div>
+          <div class="price">$24.00 USD</div>
+          <div class="old-price">$24.00 USD</div>
+        </div>
+      </div>
+      <div class="expanded" id="expand-3">
+        <div class="selectors">
+          <label>#1</label>
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>White</option><option>Colour</option></select>
+        </div>
+        <div class="selectors">
+          <label>#2</label>
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>White</option><option>Colour</option></select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="delivery">Free Delivery</div>
+      <div class="total">Total: $18.00 USD</div>
+    </div>
+    <button class="add-to-cart">+ Add to Cart</button>
+    <div class="powered">@ Powered by Pumper</div>
+  </div>
+
+  <script>
+    function selectBox(num) {
+      const boxes = document.querySelectorAll('.box');
+      boxes.forEach((box, index) => {
+        if (index === num - 1) {
+          box.classList.add('selected');
+        } else {
+          box.classList.remove('selected');
+        }
+      });
+    }
+
+    window.onload = function () {
+      selectBox(2); // Default selected box
+    };
+  </script>
+</body>
+</html>
